@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+
 namespace LibApp
 {
     public class Startup
@@ -19,13 +20,10 @@ namespace LibApp
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             var authenticationSettings = new AuthenticationSettings();
             Configuration.GetSection("Authentication").Bind(authenticationSettings);
-
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -42,10 +40,7 @@ namespace LibApp
             services.Add(new ServiceDescriptor(typeof(IGenreRepository), typeof(GenreRepository), ServiceLifetime.Scoped));
             services.Add(new ServiceDescriptor(typeof(IMembershipTypeRepository), typeof(MembershipTypeRepository), ServiceLifetime.Scoped));
             services.Add(new ServiceDescriptor(typeof(ICustomerRepository), typeof(CustomerRepository), ServiceLifetime.Scoped));
-
-
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

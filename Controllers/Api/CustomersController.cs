@@ -72,7 +72,7 @@ namespace LibApp.Controllers.Api
             repository.AddCustomer(customer);
             repository.Save();
 
-            customerDto.Id = int.Parse(customer.Id);
+            customerDto.Id = customer.Id;
 
             return CreatedAtRoute(nameof(GetCustomer), new { id = customerDto.Id }, customerDto);
         }

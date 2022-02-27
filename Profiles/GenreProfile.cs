@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using LibApp.Dtos;
 using LibApp.Models;
 using System;
@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LibApp.Profiles
 {
-    public class BookProfile : Profile
+    public class GenreProfile : Profile
     {
-        public BookProfile()
+        public GenreProfile()
         {
-            CreateMap<Book, BookDto>();
-            CreateMap<BookDto, Book>();
+            CreateMap<Genre, GenreDto>();
+            CreateMap<GenreDto, Genre>();
         }
     }
 }
