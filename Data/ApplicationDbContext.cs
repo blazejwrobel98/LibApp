@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using LibApp.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibApp.Data
 {
+    [NotMapped]
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Customer> Customers { get; set; }
