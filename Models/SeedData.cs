@@ -24,13 +24,13 @@ namespace LibApp.Models
                     SeedRoles(context);
 
                 if (!context.Customers.Any())
-                     // SeedCustomers(userManager);
+                     SeedCustomers(userManager);
 
                 if (!context.Genre.Any())
-                    // SeedGenres(context);
+                    SeedGenres(context);
 
                 if (!context.Books.Any())
-                    // SeedBooks(context);
+                    SeedBooks(context);
 
                 context.SaveChanges();
             }
@@ -199,7 +199,7 @@ namespace LibApp.Models
             };
 
             userManager.CreateAsync(customer2).Wait();
-            userManager.AddToRoleAsync(customer2, "user").Wait();
+            userManager.AddToRoleAsync(customer2, "storemanager").Wait();
 
             var customer3 = new Customer
             {
@@ -216,7 +216,7 @@ namespace LibApp.Models
             };
 
             userManager.CreateAsync(customer3).Wait();
-            userManager.AddToRoleAsync(customer3, "user").Wait();
+            userManager.AddToRoleAsync(customer3, "owner").Wait();
 
         }
 

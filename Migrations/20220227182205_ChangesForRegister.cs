@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace LibApp.Data.Migrations
+namespace LibApp.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class ChangesForRegister : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

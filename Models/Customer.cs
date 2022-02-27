@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace LibApp.Models
 {
@@ -8,6 +9,7 @@ namespace LibApp.Models
     {
         [Required(ErrorMessage = "Please enter customer's name")]
         [StringLength(255)]
+        [AllowNull]
         public string Name { get; set; }
         public bool HasNewsletterSubscribed { get; set; }
         public MembershipType MembershipType { get; set; }
