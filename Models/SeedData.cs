@@ -40,10 +40,79 @@ namespace LibApp.Models
         {
             context.Books.AddRange(
                 // Generate 10 books with random data for testing purposes 
-                new Book {
-                    G
-                    Title = "The Lord of the Rings",
-                    Author = "J.R.R. Tolkien"
+                new Book
+                {
+                    GenreId = 1,
+                    Name = "The Hunger Games",
+                    AuthorName = "Suzanne Collins",
+                    ReleaseDate = DateTime.Parse("15/01/2012"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 2
+                },
+                new Book
+                {
+                    GenreId = 2,
+                    Name = "The Martian",
+                    AuthorName = "Andy Weir",
+                    ReleaseDate = DateTime.Parse("10/02/2012"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 5
+                },
+                new Book
+                {
+                    GenreId = 3,
+                    Name = "The Hobbit",
+                    AuthorName = "J.R.R. Tolkien",
+                    ReleaseDate = DateTime.Parse("10/04/2012"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 8
+                },
+                new Book
+                {
+                    GenreId = 4,
+                    Name = "The Fault in our Stars",
+                    AuthorName = "John Green",
+                    ReleaseDate = DateTime.Parse("21/01/2014"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 3
+                },
+                new Book
+                {
+                    GenreId = 5,
+                    Name = "The Book Thief",
+                    AuthorName = "Markus Zusak",
+                    ReleaseDate = DateTime.Parse("15/01/2002"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 12
+                },
+                new Book
+                {
+                    GenreId = 6,
+                    Name = "The Chronicles of Narnia",
+                    AuthorName = "C.S. Lewis",
+                    ReleaseDate = DateTime.Parse("12/01/2011"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 16
+                },
+                new Book
+                {
+                    GenreId = 7,
+                    Name = "The Lion, the Witch and the Wardrobe",
+                    AuthorName = "C.S. Lewis",
+                    ReleaseDate = DateTime.Parse("10/01/2014"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 12
+                },
+                new Book
+                {
+                    GenreId = 8,
+                    Name = "The Chronicles of Narnia: Prince Caspian",
+                    AuthorName = "C.S. Lewis",
+                    ReleaseDate = DateTime.Parse("10/05/2012"),
+                    DateAdded = DateTime.Now,
+                    NumberInStock = 5
+                }
+
             );
         }
 
@@ -63,22 +132,32 @@ namespace LibApp.Models
                 new Genre
                 {
                     Id = 3,
-                    Name = "Sci-Fi"
+                    Name = "Science Fiction"
                 },
                 new Genre
                 {
                     Id = 4,
-                    Name = "Criminal"
+                    Name = "Mystery"
                 },
                 new Genre
                 {
                     Id = 5,
-                    Name = "Biography"
+                    Name = "Historical Fiction"
                 },
                 new Genre
                 {
                     Id = 6,
                     Name = "Horror"
+                },
+                new Genre
+                {
+                    Id = 7,
+                    Name = "Thriller"
+                },
+                new Genre
+                {
+                    Id = 8,
+                    Name = "Adventure"
                 }
             );
         }
@@ -107,39 +186,38 @@ namespace LibApp.Models
 
             var customer2 = new Customer
             {
-                Name = "David Green",
-                Email = "david.green@gmail.com",
-                NormalizedEmail = "david.green@gmail.com",
-                UserName = "david.green@gmail.com",
-                NormalizedUserName = "david.green@gmail.com",
-                MembershipTypeId = 1,
-                EmailConfirmed = true,
-                LockoutEnabled = false,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                PasswordHash = hasher.HashPassword(null, "test")
-            };
-
-
-            userManager.CreateAsync(customer2).Wait();
-            userManager.AddToRoleAsync(customer2, "storemanager").Wait();
-
-            var customer3 = new Customer
-            {
                 Name = "John Smith",
                 Email = "john.smith@gmail.com",
                 NormalizedEmail = "john.smith@gmail.com",
                 UserName = "john.smith@gmail.com",
                 NormalizedUserName = "john.smith@gmail.com",
-                MembershipTypeId = 1,
+                MembershipTypeId = 2,
                 EmailConfirmed = true,
                 LockoutEnabled = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 PasswordHash = hasher.HashPassword(null, "test")
             };
 
+            userManager.CreateAsync(customer2).Wait();
+            userManager.AddToRoleAsync(customer2, "user").Wait();
+
+            var customer3 = new Customer
+            {
+                Name = "Jane Doe",
+                Email = "jane.doe@gmail.com",
+                NormalizedEmail = "jane.doe@gmail.com",
+                UserName = "jane.doe@gmail.com",
+                NormalizedUserName = "jane.doe@gmail.com",
+                MembershipTypeId = 3,
+                EmailConfirmed = true,
+                LockoutEnabled = false,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = hasher.HashPassword(null, "test")
+            };
 
             userManager.CreateAsync(customer3).Wait();
-            userManager.AddToRoleAsync(customer3, "owner").Wait();
+            userManager.AddToRoleAsync(customer3, "user").Wait();
+
         }
 
         private static void SeedRoles(ApplicationDbContext context)

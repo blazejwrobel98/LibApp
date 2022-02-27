@@ -25,7 +25,7 @@ namespace LibApp.Controllers.Api
         {
             var customer = _context.Customers
                 .Include(c => c.MembershipType)
-                .Single(c => c.Id == newRental.CustomerId);
+                .Single(c => int.Parse(c.Id) == newRental.CustomerId);
 
             var books = _context.Books
                 .Include(b => b.Genre)
