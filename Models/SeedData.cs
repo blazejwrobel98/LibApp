@@ -24,13 +24,13 @@ namespace LibApp.Models
                     SeedRoles(context);
 
                 if (!context.Customers.Any())
-                     SeedCustomers(userManager);
+                     // SeedCustomers(userManager);
 
                 if (!context.Genre.Any())
-                    SeedGenres(context);
+                    // SeedGenres(context);
 
                 if (!context.Books.Any())
-                    SeedBooks(context);
+                    // SeedBooks(context);
 
                 context.SaveChanges();
             }
